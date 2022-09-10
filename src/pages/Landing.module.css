@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+.title {
+  font-size: 64px;
+}
+
+.upute {
+  width: 50%;
+  font-size: 20px;
+}
+
+.imageExample {
+  width: 50vw;
+  height: auto;
+}
+
+.startTutorial {
+  color: #FFF;
+  outline: 0;
+  border: none;
+  border-radius: 3px;
+  background-color: rgb(233, 143, 27);
+  padding: 15px 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
