@@ -18,11 +18,11 @@ export default function Landing() {
         <p className={styles.upute}>Cilj je skupiti što više bodova. U svakoj partij možete baciti ili preskočiti bacanje. Ukoliko preskočite bacanje, prikupljeni bodovi se neće mijenjati. No, ako se odlučite na bacanje novčića, moguće ostvariti, ali i izgubiti određeni iznos bodova. Pravilo igre je da se uvijek kladite na glavu.
         U prvom dijelu igre će Vam u svakom bacanju biti ponuđeni uvjeti oklade, te koja je vjerojatnost dobitka li gubitka. No, u drugom krugu te informacije nećete imati.
         </p>
-        <p>
+        <p className={styles.imageText}>
           Na donjoj slici je primjer igre te naznake na svim komponentama. Proučite ju prije pokretanja probne igre.
         </p>
         <img src="./tutorial_example.png" alt="tutorial_example" className={styles.imageExample}></img>
-        <button className={styles.startTutorial} onClick={() => {
+        <button className={styles.btn} onClick={() => {
           dispatch(setLeft(3)); 
           dispatch(setBlind(false)); 
           dispatch(setLog(false));

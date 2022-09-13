@@ -22,22 +22,24 @@ export default function Game() {
   const [gain, setGain] = useState(Math.round(Math.random() * 100));
   const [loss, setLoss] = useState(Math.round(Math.random() * 100));
   const [points, setPoints] = useState(0);
-  const [landText, setLandingText] = useState("");
+  const [landText, setLandingText] = useState(" ");
   return (
     <div>
       <div className={styles.container}>
-        <div className={styles.points}>{points}</div>
         <div className={styles.left}>
           <div className={styles.probability} hidden={blind}>
             {probability}%
           </div>
-          <div className={styles.bgText}>Heads</div>
+          <div className={styles.bgText}>Glava</div>
           <div className={styles.gain} hidden={blind}>
             +{gain}
           </div>
         </div>
         <div className={styles.middle}>
-          <h3 className={styles.landingText}>{landText}</h3>
+
+        <h3 className={styles.landingText}>{landText}</h3>
+          
+        <div className={styles.points}>{points}</div>
           <div
             className={styles.coin + " " + styles[coinState]}
             onClick={() => {
@@ -84,7 +86,7 @@ export default function Game() {
             </div>
           </div>
           <div
-            className={styles.skip}
+            className={styles.btn}
             onClick={() => {
               setLandingText(
                 Math.round(Math.random() * 100) <= probability
@@ -111,7 +113,7 @@ export default function Game() {
           <div className={styles.probability} hidden={blind}>
             {100 - probability}%
           </div>
-          <div className={styles.bgText}>Tails</div>
+          <div className={styles.bgText}>Pismo</div>
           <div className={styles.loss} hidden={blind}>
             -{loss}
           </div>
