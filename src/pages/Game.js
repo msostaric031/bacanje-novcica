@@ -10,17 +10,21 @@ import {
 } from "../store/stageSlice";
 import { addSpin, setLastPoints } from "../store/historySlice";
 
+const spinConstants = {
+  probabilities: [1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99],
+  values: [1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99],
+};
+
 export default function Game() {
   const dispatch = useDispatch();
   const spinsLeft = useSelector(selectSpinsLeft);
   const log = useSelector(selectLog);
   const blind = useSelector(selectBlind);
+  const [lastSpinTime, setLastSpinTime] = useState(Date.now());
   const [coinState, setCoinState] = useState("heads");
-  const [probability, setProbability] = useState(
-    Math.round(Math.random() * 100)
-  );
-  const [gain, setGain] = useState(Math.round(Math.random() * 100));
-  const [loss, setLoss] = useState(Math.round(Math.random() * 100));
+  const [probability, setProbability] = useState(40);
+  const [gain, setGain] = useState(60);
+  const [loss, setLoss] = useState(40);
   const [points, setPoints] = useState(0);
   const [landText, setLandingText] = useState(" ");
   return (
@@ -55,18 +59,39 @@ export default function Game() {
                     addSpin({
                       result: newState,
                       probability: probability,
+                      blind: blind,
                       gain: gain,
                       loss: loss,
+                      timeElapsed: Date.now() - lastSpinTime,
                     })
                   );
                 }
+                setLastSpinTime(Date.now());
               }, 100);
               setTimeout(() => {
                 if (newState === "heads") setPoints(points + gain);
                 else setPoints(points - loss);
-                setProbability(Math.round(Math.random() * 100));
-                setGain(Math.round(Math.random() * 100));
-                setLoss(Math.round(Math.random() * 100));
+                setProbability(
+                  spinConstants.probabilities[
+                    Math.round(
+                      Math.random() * (spinConstants.probabilities.length - 1)
+                    )
+                  ]
+                );
+                setGain(
+                  spinConstants.values[
+                    Math.round(
+                      Math.random() * (spinConstants.values.length - 1)
+                    )
+                  ]
+                );
+                setLoss(
+                  spinConstants.values[
+                    Math.round(
+                      Math.random() * (spinConstants.values.length - 1)
+                    )
+                  ]
+                );
                 if (spinsLeft === 1) {
                   dispatch(setLastPoints(points));
                   dispatch(nextStage());
@@ -94,11 +119,32 @@ export default function Game() {
                   : "Palo bi pismo"
               );
               if (log) {
-                dispatch(addSpin("skip"));
+                dispatch(
+                  addSpin({
+                    result: "skip",
+                    blind: blind,
+                    timeElapsed: Date.now() - lastSpinTime,
+                  })
+                );
               }
-              setProbability(Math.round(Math.random() * 100));
-              setGain(Math.round(Math.random() * 100));
-              setLoss(Math.round(Math.random() * 100));
+              setLastSpinTime(Date.now());
+              setProbability(
+                spinConstants.probabilities[
+                  Math.round(
+                    Math.random() * (spinConstants.probabilities.length - 1)
+                  )
+                ]
+              );
+              setGain(
+                spinConstants.values[
+                  Math.round(Math.random() * (spinConstants.values.length - 1))
+                ]
+              );
+              setLoss(
+                spinConstants.values[
+                  Math.round(Math.random() * (spinConstants.values.length - 1))
+                ]
+              );
               if (spinsLeft === 1) {
                 dispatch(setLastPoints(points));
                 dispatch(nextStage());
