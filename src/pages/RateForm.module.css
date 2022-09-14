@@ -1,4 +1,5 @@
 .container {
+  margin-top: 1%;
   display: flex;
   width: 100vw;
   flex-direction: column;
@@ -6,6 +7,8 @@
 }
 
 .ratingBar {
+  margin-top: 1%;
+  margin-bottom: 1%;
   display: flex;
 }
 
@@ -17,5 +20,5 @@
 }
 
 .active-rating {
-  background-color:aquamarine;
+  background-color:rgb(0, 255, 170,);
 }

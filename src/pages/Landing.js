@@ -20,6 +20,7 @@ export default function Landing() {
           biti ponuđeni uvjeti oklade, te koja je vjerojatnost dobitka li
           gubitka. No, u drugom krugu te informacije nećete imati.
         </p>
+
         <p>
           Na donjoj slici je primjer igre te naznake na svim komponentama.
           Proučite ju prije pokretanja probne igre.

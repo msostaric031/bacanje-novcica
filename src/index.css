@@ -1,11 +1,23 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:100";
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #4dd0e1;
+  color: rgb(245, 246, 250, 1);
+  
+  background:#0097e6 no-repeat center center fixed; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #487eb0 1%, rgba(79,143,249,1) 100%); /* FF3.6+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #487eb0 1%,rgba(79,143,249,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(center, ellipse cover,  #487eb0 1%,rgba(79,143,249,1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #487eb0 1%,rgba(79,143,249,1) 100%); /* IE10+ */
+    background: linear-gradient(ellipse at center,  #487eb0 1%,rgba(79,143,249,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4c5fc', endColorstr='#4f8ff9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    min-height: 100%;
+  /*background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);  
+  background-size: cover;
+  height:100%;*/
 }
 
 code {
