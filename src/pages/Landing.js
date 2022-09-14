@@ -33,6 +33,8 @@ export default function Landing() {
         <Form
           onChange={(e) => setRightAnswer(e.target.dataset.value === "true")}
         >
+          <p>Proučavanjem slike mogu zaključiti da:</p>
+
           <div key={`default-radio`} className="mb-5">
             <Form.Check
               label="Imam 38% vjerojatnosti da osvojim 7 bodova i 62% da izgubim 34 boda"
@@ -48,13 +50,16 @@ export default function Landing() {
               type="radio"
             />
             <Form.Check
-              label="Imam 38% vjerojatnosti da osvojim 34 boda i 62% vjerojatnosti da izgubim 7 bodova"
+              label="Imam 50% vjerojatnosti da osvojim 98 boda i 50% vjerojatnosti da izgubim 29 bodova"
               name="group1"
               data-value="true"
               type="radio"
             />
           </div>
         </Form>
+        <p className={styles.txtSmall}>
+          *odaberite točan odgovor kako bi započeli igru*
+        </p>
         {isRightAnswer}
         <button
           className={styles.startTutorial}
