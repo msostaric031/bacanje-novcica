@@ -1,0 +1,61 @@
+version: '3'
+services:
+  bacanje-novcica-api:
+    image: bacanje-novcica-api
+    build:
+      context: src/api/
+      dockerfile: Dockerfile
+    ports:
+      - 9000:9000
+    volumes:
+      - ./src/api/.:/var/www/bacanje-novcica-api
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql
+    build:
+      context: src/mysql
+      dockerfile: Dockerfile
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    environment:
+      MYSQL_DATABASE: fact_db
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx
+    build:
+      context: src/nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - muna-api
+    networks:
+      - app-network
+  
+  redis:
+      image: redis:4.0
+      container_name: redis
+      ports:
+        - "6382:6379"
+      networks:
+        - app-network
+
+volumes:
+  dbdata:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
+
